@@ -47,7 +47,7 @@ namespace AmazonSes
         static void Main(string[] args)
         {
             var emailList = new List<string>();
-            for (int i = 0; i <= 1; i++)
+            for (int i = 1; i <= 100; i++)
             {
                 emailList.Add($"test{i}+mytestemail@gmail.com");
             }
