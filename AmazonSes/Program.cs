@@ -1,6 +1,5 @@
 ﻿using System;
 using Amazon;
-using System;
 using System.Collections.Generic;
 using Amazon.SimpleEmail;
 using Amazon.SimpleEmail.Model;
@@ -10,15 +9,8 @@ namespace AmazonSes
 {
     class Program
     {
-        // Replace sender@example.com with your "From" address.
-        // This address must be verified with Amazon SES.
+        
         static readonly string senderAddress = "testemailinn@gmail.com";
-
-
-        // Replace recipient@example.com with a "To" address. If your account
-        // is still in the sandbox, this address must be verified.
-
-        //static public string receiverAddress { get; set; }
 
         static public List<string> emList { get; set; }
 
@@ -30,12 +22,10 @@ namespace AmazonSes
 
         static readonly string subject = "Amazon SES test (AWS SDK for .NET)";
 
-        // The email body for recipients with non-HTML email clients.
         static readonly string textBody = "Amazon SES Test (.NET)\r\n"
                                         + "This email was sent through Amazon SES "
                                         + "using the AWS SDK for .NET.";
 
-        // The HTML body of the email.
         static readonly string htmlBody = @"<html>
 <head></head>
 <body>
@@ -59,8 +49,7 @@ namespace AmazonSes
                 //emList.Add($"test{i}+mytestemail@gmail.com");
                 emList.Add($"testemailinn{i}@gmail.com");
             }
-            // Replace USWest2 with the AWS Region you're using for Amazon SES.
-            // Acceptable values are EUWest1, USEast1, and USWest2.
+
             foreach (var item in emList)
             {
                 using (var client = new AmazonSimpleEmailServiceClient(RegionEndpoint.USWest2))
@@ -72,8 +61,6 @@ namespace AmazonSes
                         {
                             ToAddresses =
                             new List<string> { item }
-
-                            //ToAddresses = item
                         },
                         Message = new Message
                         {
